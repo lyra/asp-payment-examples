@@ -1,10 +1,45 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Home";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1>Welcome !</h1>
+    <p>This website is for demonstration only. You'll need to contact your bank in order to get full featured '</p>
+</div>
+<div class="row mt-4">
+    <div class="col">
+        <h1>What to expect from this demo ?</h1>
+        <p>This website is for demo only. If you want to integrate your own system. Please contact the support or a partner to help you integrate everything.</p>
+    </div>
+</div>
+<div class="row mt-2">
+    <div class="col">
+        <div class="card border-0 shadow-sm">
+            <div class="card-body">
+                <h2 class="card-title">Create a single payment form</h2>
+                <p class="card-text">Create a form with your parameters and see how you can create a single payment form using the hosted form provided by your bank.</p>
+                <a asp-page="/noParameters/singlePayment" class="btn btn-primary">Try it</a>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card border-0 shadow-sm">
+            <div class="card-body">
+                <h2 class="card-title">Create a multiple payment form</h2>
+                <p class="card-text">Create a form with your parameters and see how you can create a multiple payment form using the hosted form provided by your bank.</p>
+                <a asp-page="/noParameters/multiPayment" class="btn btn-primary">Try it</a>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card border-0 shadow-sm">
+            <div class="card-body">
+                <h2 class="card-title">Create an authorization only form</h2>
+                <p class="card-text">Create a form and create an authorization only form without capture using the hosted form provided by your bank.</p>
+                <a asp-page="/noParameters/multiPayment" class="btn btn-primary">Try it</a>
+            </div>
+        </div>
+    </div>
 </div>
