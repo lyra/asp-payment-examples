@@ -1,0 +1,35 @@
+﻿@model SinglePaymentViewModel
+@{
+    ViewData["Title"] = "Single payment";
+}
+<div class="row">
+    <div class="col">
+        <h1>Configuration</h1>
+        <p>Use the credentials provided by your bank to configure this form. For demonstration purpose, the only currency that will be used is EUR.</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <form method="post">
+            <div class="mb-3">
+                <label class="form-label" asp-for="SiteId"></label>
+                <input class="form-control" asp-for="SiteId" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label" asp-for="Amount"></label>
+                <input class="form-control" asp-for="Amount" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label" asp-for="PaymentUrl"></label>
+                <input class="form-control" asp-for="PaymentUrl" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label" asp-for="ApiKey"></label>
+                <input class="form-control" asp-for="ApiKey" />
+            </div>
+            <div class="mb-3">
+                <button class="btn btn-primary" type="submit">Create my form</button>
+            </div>
+        </form>
+    </div>
+</div>

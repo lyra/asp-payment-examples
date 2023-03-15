@@ -33,24 +33,28 @@ namespace razor_pages.Pages.noParameters
 
         public IActionResult OnPost()
         {
-            var paymentModel = new PaymentFormModel
+            if(ModelState.IsValid)
             {
-                PaymentUrl = PaymentUrl,
-                SiteId = SiteId,
-                TransactionId = string.Join("", Guid.NewGuid().ToString("n").Take(6).Select(s => s)),
-                Currency = "978",
-                Amount = Amount,
-                Mode = "INTERACTIVE",
-                Delay = "0",
-                Context = "TEST",
-                Action = "PAYMENT",
-                Config = "SINGLE",
-                TransactionDate = DateTime.UtcNow.ToString("yyyyMMddHHmmss"),
-                ValidationMode = "0",
-                ReturnMode = "POST",
-                ApiKey = ApiKey
-            };
-            return RedirectToPage("/Payment",paymentModel);
+                var paymentModel = new PaymentFormModel
+                {
+                    PaymentUrl = PaymentUrl,
+                    SiteId = SiteId,
+                    TransactionId = string.Join("", Guid.NewGuid().ToString("n").Take(6).Select(s => s)),
+                    Currency = "978",
+                    Amount = Amount,
+                    Mode = "INTERACTIVE",
+                    Delay = "0",
+                    Context = "TEST",
+                    Action = "PAYMENT",
+                    Config = "SINGLE",
+                    TransactionDate = DateTime.UtcNow.ToString("yyyyMMddHHmmss"),
+                    ValidationMode = "0",
+                    ReturnMode = "POST",
+                    ApiKey = ApiKey
+                };
+                return RedirectToPage("/Payment", paymentModel);
+            }
+            return Page();
         }
     }
 }
