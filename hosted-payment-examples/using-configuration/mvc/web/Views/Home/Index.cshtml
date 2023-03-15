@@ -1,9 +1,6 @@
-﻿@page
-@model IndexModel
-@{
+﻿@{
     ViewData["Title"] = "Home";
 }
-
 <div class="text-center">
     <h1>Welcome !</h1>
     <p>This website is for demonstration only. You'll need to contact your bank in order to get full featured '</p>
@@ -20,7 +17,7 @@
             <div class="card-body">
                 <h2 class="card-title">Create a single payment form</h2>
                 <p class="card-text">Create a form with your parameters and see how you can create a single payment form using the hosted form provided by your bank.</p>
-                <a href="#" class="btn btn-primary">Try it</a>
+                <a asp-controller="Payment" asp-action="ConfigureSinglePayment" class="btn btn-primary">Try it</a>
             </div>
         </div>
     </div>
