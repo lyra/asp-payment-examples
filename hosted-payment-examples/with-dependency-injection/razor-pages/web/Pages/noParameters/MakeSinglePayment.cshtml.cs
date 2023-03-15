@@ -48,7 +48,7 @@ namespace web.Pages.noParameters
                 ReturnMode = "POST"
             };
             paymentModel.Signature = _paymentService.SignPayment(ApiKey, paymentModel);
-            PaymentForm = _paymentService.CreatePaymentFormWithParameters(paymentModel);
+            PaymentForm = _paymentService.CreateSinglePayment(ApiKey, SiteId, Amount);
             PaymentUrl = HttpUtility.UrlDecode(PaymentUrl);
         }
     }
