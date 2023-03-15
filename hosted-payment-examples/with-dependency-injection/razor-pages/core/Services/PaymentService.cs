@@ -1,52 +1,76 @@
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using razor_pages.Models;
+﻿using core.Interfaces;
+using core.Models;
+using Microsoft.Extensions.Logging;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading.Tasks;
 
-namespace razor_pages.Pages
+namespace core.Services
 {
-    public class PaymentModel : PageModel
+    public class PaymentService : IPaymentService
     {
-        [BindProperty]
-        public string PaymentUrl { get; set; } = string.Empty;
+        private readonly ILogger<PaymentService> _logger;
 
-        [BindProperty]
-        public Dictionary<string, string> PaymentForm { get; set; } = null!;
 
-        public IActionResult OnGet(PaymentFormModel formModel)
+        public PaymentService(ILogger<PaymentService> logger)
         {
-            if(string.IsNullOrEmpty(formModel.PaymentUrl))
-            {
-                return RedirectToPage("/Error");
-            }
-            PaymentUrl = formModel.PaymentUrl;
-            formModel.Signature = CalculateSignature(formModel);
-            PaymentForm = CreateParameters(formModel);
-            return Page();
+            _logger = logger;
         }
 
-        private string CalculateSignature(PaymentFormModel model)
+        public Dictionary<string, string> CreateSinglePayment(string apiKey, string siteId, string amount)
         {
-            var encodingKey = Encoding.UTF8.GetBytes(model.ApiKey);
+            _logger.LogInformation("Create the payment model");
+            var paymentModel = new PaymentFormModel
+            {
+                SiteId = siteId,
+                TransactionId = string.Join("", Guid.NewGuid().ToString("n").Take(6).Select(s => s)),
+                Currency = "978",
+                Amount = amount,
+                Mode = "INTERACTIVE",
+                Delay = "0",
+                Context = "TEST",
+                Action = "PAYMENT",
+                Config = "SINGLE",
+                TransactionDate = DateTime.UtcNow.ToString("yyyyMMddHHmmss"),
+                ValidationMode = "0",
+                ReturnMode = "POST",
+            };
+            _logger.LogInformation("Sign the payment");
+            paymentModel.Signature = SignPayment(apiKey, paymentModel);
+            _logger.LogInformation("Return the payment parameters");
+            return CreatePaymentFormWithParameters(paymentModel);
+        }
+
+        public string SignPayment(string apiKey, PaymentFormModel paymentForm)
+        {
+            _logger.LogInformation("Create the UTF8 api key");
+            var encodingKey = Encoding.UTF8.GetBytes(apiKey);
             var signatureParameters = new StringBuilder();
-            var parametersFromClass = CreateParameters(model).OrderBy(x => x.Key);
-            foreach(var parameter in parametersFromClass)
+            _logger.LogInformation("Filter all parameters by key");
+            var parametersFromClass = CreatePaymentFormWithParameters(paymentForm).OrderBy(x => x.Key);
+            _logger.LogInformation("Concatenante all parameters with the + separator");
+            foreach (var parameter in parametersFromClass)
             {
                 signatureParameters.Append(parameter.Value);
                 signatureParameters.Append("+");
             }
-            signatureParameters.Append(model.ApiKey);
+            _logger.LogInformation("Add the api key at the end of the parameters string");
+            signatureParameters.Append(apiKey);
             var signatureBytes = Encoding.UTF8.GetBytes(signatureParameters.ToString());
+            _logger.LogInformation("Create the crypto key from api key");
             var cryptoKey = new HMACSHA256(encodingKey);
+            _logger.LogInformation("Sign the parameter string");
             var signatureHash = cryptoKey.ComputeHash(signatureBytes);
+            _logger.LogInformation("Convert the signature to base64");
             var signatureBase64String = Convert.ToBase64String(signatureHash);
             return signatureBase64String;
-            
         }
 
-        private Dictionary<string, string> CreateParameters(PaymentFormModel model)
+        public Dictionary<string, string> CreatePaymentFormWithParameters(PaymentFormModel model)
         {
             var parameters = new Dictionary<string, string>();
             var properties = model.GetType().GetProperties().ToList();

@@ -1,3 +1,6 @@
+using core.Interfaces;
+using core.Services;
+
 namespace web
 {
     public class Program
@@ -8,6 +11,8 @@ namespace web
 
             // Add services to the container.
             builder.Services.AddRazorPages();
+
+            builder.Services.AddTransient<IPaymentService, PaymentService>();
 
             var app = builder.Build();
 
