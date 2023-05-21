@@ -1,0 +1,72 @@
+﻿@{
+    ViewData["Title"] = "Accueil";
+}
+<div class="px-8 py-12">
+    <div class="grid grid-cols-6 md:grid-cols-12 gap-6 items-center">
+        <div class="col-span-6 space-y-4">
+            <h1 class="text-4xl font-extrabold">The payment plaform <span class="text-blue-900 dark:text-blue-700">made in France</span></h1>
+            <p class="text-xl">The Lyra group is developing a very complete online payment solution. Learn how to use it with ASP.Net Core using our samples.</p>
+            <div class="grid grid-cols-4 md:grid-cols-12 gap-4">
+                <div class="col-span-4">
+                    <a href="#" class="flex flex-row gap-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-amber-500 hover:text-amber-400 dark:text-amber-400 dark:hover:text-amber-300">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
+                        </svg>
+                        <span>Embedded form</span>
+                    </a>
+                </div>
+                <div class="col-span-4">
+                    <a href="#" class="flex flex-row gap-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-amber-500 hover:text-amber-400 dark:text-amber-400 dark:hover:text-amber-300">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
+                        </svg>
+                        <span>Smart form</span>
+                    </a>
+                </div>
+                <div class="col-span-4">
+                    <a asp-controller="RedirectedForm" asp-action="Index" class="flex flex-row gap-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-amber-500 hover:text-amber-400 dark:text-amber-400 dark:hover:text-amber-300">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
+                        </svg>
+                        <span>Redirected form</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-span-6">
+            <img class="max-h-96 " alt="Image by upklyak on Freepik" src="~/imgs/3d-payment-illustration.png" />
+        </div>
+    </div>
+</div>
+<div class="mt-4 px-8 py-6">
+    <div class="flex flex-col gap-4 max-w-xl">
+        <h2 class="text-lg font-bold">How to use samples from Lyra ?</h2>
+        <p>All samples available on the GitHub repository can be compiled and executed on all operating systems supporting .Net.</p>
+    </div>
+    <div class="mt-6 flex flex-col gap-6">
+        <div class="flex flex-row gap-6 items-center bg-white dark:bg-slate-800 p-6 rounded-lg shadow-lg">
+            <div class="bg-blue-900 hover:bg-blue-800 dark:bg-blue-700 dark:hover:bg-blue-600 rounded-full p-2 flex items-center justify-center text-slate-50 w-6 h-6">
+                <span class="font-extrabold">1</span>
+            </div>
+            <p class="font-bold">Download the zip project or clone it from GitHub</p>
+        </div>
+        <div class="flex flex-row gap-6 items-center bg-white dark:bg-slate-800 p-6 rounded-lg shadow-lg">
+            <div class="bg-blue-900 hover:bg-blue-800 dark:bg-blue-700 dark:hover:bg-blue-600 rounded-full p-2 flex items-center justify-center text-slate-50 w-6 h-6">
+                <span class="font-extrabold">2</span>
+            </div>
+            <p class="font-bold">Navigate to the folder corresponding of the integration you want (mvc without configuration, razor pages with configuration, etc.)</p>
+        </div>
+        <div class="flex flex-row gap-6 items-center bg-white dark:bg-slate-800 p-6 rounded-lg shadow-lg">
+            <div class="bg-blue-900 hover:bg-blue-800 dark:bg-blue-700 dark:hover:bg-blue-600 rounded-full p-2 flex items-center justify-center text-slate-50 w-6 h-6">
+                <span class="font-extrabold">3</span>
+            </div>
+            <p class="font-bold">Open the solution with Visual Studio or Visual Studio Code</p>
+        </div>
+        <div class="flex flex-row gap-6 items-center bg-white dark:bg-slate-800 p-6 rounded-lg shadow-lg">
+            <div class="bg-blue-900 hover:bg-blue-800 dark:bg-blue-700 dark:hover:bg-blue-600 rounded-full p-2 flex items-center justify-center text-slate-50 w-6 h-6">
+                <span class="font-extrabold">4</span>
+            </div>
+            <p class="font-bold">Run the solution with Visual Studio or use 'dotnet run' command line</p>
+        </div>
+    </div>
+</div>
