@@ -1,0 +1,13 @@
+{
+  "version": "1.0.0",
+  "name": "lyra.sample",
+  "private": true,
+  "scripts": {
+    "css:dev": "npx tailwindcss -i ./wwwroot/css/site.css -o ./wwwroot/css/lyra.css --watch",
+    "css:dist": "npx tailwindcss -i ./wwwroot/css/site.css -o ./wwwroot/css/lyra.min.css --minify"
+  },
+  "devDependencies": {
+    "@tailwindcss/forms": "^0.5.3",
+    "tailwindcss": "^3.3.2"
+  }
+}
